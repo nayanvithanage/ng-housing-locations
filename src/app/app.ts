@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import { Home } from "./home/home";
+import { HomeComponent } from "./home/home";
 
 @Component({
   selector: 'app-root',
-  imports: [Home],
+  imports: [HomeComponent],
   template: `
     <header class = "brand-name">
       <img class="brand-logo" src="assets/logo.svg" 
