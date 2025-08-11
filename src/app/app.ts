@@ -1,17 +1,18 @@
-import {Component} from '@angular/core';
-import { HomeComponent } from "./home/home";
+import { Component } from '@angular/core';
+import { HeaderComponent } from './Components/header/header';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [HomeComponent],
+  imports: [HeaderComponent, RouterOutlet],
   template: `
-    <header class = "brand-name">
-      <img class="brand-logo" src="assets/logo.svg" 
-      alt="Logo" aria-hidden="true">
-    </header>
+
+    <app-header class="header"></app-header>
+    
     <section class="content">
-      <app-home></app-home>
+      <router-outlet></router-outlet>
     </section>
+     
   `,
   styleUrls: ['./app.css'],
 })
