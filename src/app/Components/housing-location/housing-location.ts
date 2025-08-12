@@ -7,7 +7,7 @@ import { Housing } from '../../Interfaces/Ihousing';
   imports: [],
   template: `
     <section class="listing">
-  <img class="listing-photo" [src]="housing.photo" alt="{{housing.name}} photo">
+  <img class="listing-photo" [src]="'assets/'+housing.photo" alt="{{housing.name}} photo">
   <h2 class="listing-heading">{{housing.name}},{{housing.state}}</h2>
   <p class="listing-location"></p>
     </section>

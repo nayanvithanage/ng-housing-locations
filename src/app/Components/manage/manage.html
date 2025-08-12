@@ -1,1 +1,57 @@
-<p>manage works!</p>
+<div class="manage-container">
+  <aside class="sidebar">
+    <nav>
+      <div class="mat-elevation-z2" style="width:100%">
+        <button mat-button color="primary" [disabled]="selectedSection === 'list'" (click)="selectSection('list')" style="width:100%;justify-content:left">
+          <mat-icon>home</mat-icon>
+          <span class="section-text">Available Properties</span>
+        </button>
+        <button mat-button color="accent" [disabled]="selectedSection === 'add'" (click)="selectSection('add')" style="width:100%;justify-content:left">
+          <mat-icon>add_circle</mat-icon>
+          <span class="section-text">Add New Property</span>
+        </button>
+      </div>
+    </nav>
+    
+  </aside>
+ 
+  <main class="manage-main">
+    <div *ngIf="selectedSection === 'add'" class="add-property-form">
+      <h3>Add New Property</h3>
+      <form>
+        <mat-form-field appearance="outline" style="width:100%">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" name="name" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width:100%">
+          <mat-label>Location</mat-label>
+          <input matInput type="text" name="location" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width:100%">
+          <mat-label>Type</mat-label>
+          <mat-select name="type">
+            <mat-option value="housing">Housing</mat-option>
+            <mat-option value="rental">Rental Location</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div style="margin-top:1rem">
+          <button mat-raised-button color="primary" type="submit">Save</button>
+          <button mat-button type="button" (click)="selectSection('list')">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="selectedSection === 'list'">
+      <h2>Available Properties</h2>
+      <mat-list>
+        <mat-list-item *ngFor="let housing of housingList">
+          <img matListAvatar [src]="'assets/' + housing.photo" alt="housing.name" class="housing-img" />
+          <div matLine><strong>{{ housing.name }}</strong> - {{ housing.city }}, {{ housing.state }}</div>
+          <div matLine>Units: {{ housing.availableUnits }} | Wifi: {{ housing.wifi ? 'Yes' : 'No' }} | Laundry: {{ housing.laundry ? 'Yes' : 'No' }}</div>
+        </mat-list-item>
+      </mat-list>
+      <div *ngIf="housingList.length === 0">
+        <em>No housing data available.</em>
+      </div>
+    </div>
+  </main>
+</div>
